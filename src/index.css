@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Real-time Data Visualization Design System */
+
+@layer base {
+  :root {
+    /* Dark dashboard theme */
+    --background: 220 13% 9%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 12% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 12% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 220 13% 9%;
+
+    --secondary: 217 19% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 19% 18%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 264 100% 75%;
+    --accent-foreground: 220 13% 9%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* Data visualization colors */
+    --chart-line-1: 142 76% 36%;  /* Green */
+    --chart-line-2: 264 100% 75%; /* Purple */
+    --chart-line-3: 45 93% 47%;   /* Yellow */
+    --chart-line-4: 0 72% 51%;    /* Red */
+    --chart-line-5: 199 89% 48%;  /* Blue */
+    --chart-line-6: 24 100% 50%;  /* Orange */
+    --chart-line-7: 300 100% 75%; /* Magenta */
+    --chart-line-8: 180 100% 50%; /* Cyan */
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(264 100% 75%), hsl(264 100% 85%));
+    --gradient-background: linear-gradient(135deg, hsl(220 13% 9%), hsl(224 12% 12%));
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
+
+    /* Shadows */
+    --shadow-glow: 0 0 20px hsla(142, 76%, 36%, 0.3);
+    --shadow-card: 0 4px 6px -1px hsla(0, 0%, 0%, 0.1), 0 2px 4px -1px hsla(0, 0%, 0%, 0.06);
+
+    --sidebar-background: 224 12% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 142 76% 36%;
+    --sidebar-primary-foreground: 220 13% 9%;
+    --sidebar-accent: 217 19% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 32.6% 17.5%;
+    --sidebar-ring: 142 76% 36%;
+  }
+
+  /* Light mode (optional fallback) */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 264 100% 75%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+@layer components {
+  /* Chart animations */
+  .chart-enter {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .pulse-dot {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+
+  /* Status indicators */
+  .status-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .status-inactive {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  /* Keyboard event display */
+  .keyboard-event {
+    @apply bg-secondary text-secondary-foreground px-2 py-1 rounded font-mono text-xs;
+    animation: slideIn 0.2s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
