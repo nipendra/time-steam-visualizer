@@ -5,14 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-interface DataPoint {
-  t: number;
-  s: number;
-  e: number[];
-}
-
 const Index = () => {
-  const [currentDataPoint, setCurrentDataPoint] = useState<DataPoint | null>(null);
   const [serviceWorkerReady, setServiceWorkerReady] = useState(false);
 
   const {
@@ -41,17 +34,6 @@ const Index = () => {
         .catch((error) => {
           console.error('SW registration failed:', error);
         });
-
-      // Listen for messages from service worker
-      navigator.serviceWorker.addEventListener('message', (event) => {
-        const { type, data: messageData } = event.data;
-        
-        switch (type) {
-          case 'DATA_UPDATE':
-            setCurrentDataPoint(messageData);
-            break;
-        }
-      });
     }
   }, []);
 
@@ -59,7 +41,6 @@ const Index = () => {
   useEffect(() => {
     if (data.length > 0) {
       const latestPoint = data[data.length - 1];
-      setCurrentDataPoint(latestPoint);
       
       // Send to service worker for cross-tab communication
       if (navigator.serviceWorker.controller) {
