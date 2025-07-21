@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import  { useEffect, useState } from 'react';
 import { RealtimeChart } from '@/components/RealtimeChart';
 import { useWebSocketSimulator } from '@/service/WebSocketSimulator';
 import { Card } from '@/components/ui/card';
