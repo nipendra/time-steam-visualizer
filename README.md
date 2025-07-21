@@ -11,10 +11,12 @@ git clone <GIT_URL>
 # Step 2: Navigate to the project directory.
 cd <PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies. execute following command in root folder, client and server folder also.
+# Step 3: Install the necessary dependencies.
+# execute following command in root folder, client and server folder also.
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview. execute following command in root folder
+# Step 4: Start the development server with auto-reloading and an instant preview.
+#execute following command in root folder only.
 npm run start
 
 ```
