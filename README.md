@@ -14,6 +14,8 @@ dynamic `e[]` values over time `t`, and visualizes them as 8 separate lines on a
 - Service Worker receives every new point
 - Fully interactive and responsive frontend
 
+## Installation
+
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 Follow these steps:
