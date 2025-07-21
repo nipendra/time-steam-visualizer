@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import  { useEffect, useState, useCallback } from 'react';
 import { KeyboardTracker } from '@/components/KeyboardTracker';
 import { WordDisplay } from '@/components/WordDisplay';
 import { Card } from '@/components/ui/card';
