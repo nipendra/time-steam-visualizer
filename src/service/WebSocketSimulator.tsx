@@ -6,12 +6,6 @@ interface DataPoint {
   e: number[];
 }
 
-interface WebSocketSimulatorProps {
-  onDataReceived: (data: DataPoint) => void;
-  isConnected: boolean;
-  onConnectionChange: (connected: boolean) => void;
-}
-
 export const useWebSocketSimulator = () => {
   const [data, setData] = useState<DataPoint[]>([]);
   const [isConnected, setIsConnected] = useState(false);
