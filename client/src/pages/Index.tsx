@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { RealtimeChart } from '@/components/RealtimeChart';
-import { useWebSocketSimulator } from '@/components/WebSocketSimulator';
+import { useWebSocketSimulator } from '@/service/WebSocketSimulator';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 const Index = () => {
   const [serviceWorkerReady, setServiceWorkerReady] = useState(false);
+  const [startSimulationProcess, setStartSimulationProcess] = useState(true);
 
   const {
     data,
@@ -15,6 +16,16 @@ const Index = () => {
     startSimulation,
     stopSimulation
   } = useWebSocketSimulator();
+
+  const onStartClick = () => {
+        setStartSimulationProcess(false);
+        startSimulation();
+  }
+
+  const onStopClick = () => {
+     setStartSimulationProcess(true);
+      stopSimulation();
+  }
 
   // Initialize service worker
   useEffect(() => {
@@ -98,14 +109,14 @@ const Index = () => {
               <h2 className="text-xl font-semibold">Data Stream Visualization</h2>
               <div className="flex gap-2">
                 <Button 
-                  onClick={startSimulation} 
-                  disabled={isConnected}
+                  onClick={onStartClick} 
+                  disabled={!startSimulationProcess}
                   variant="default"
                 >
                   Start Stream
                 </Button>
                 <Button 
-                  onClick={stopSimulation} 
+                  onClick={onStopClick} 
                   disabled={!isConnected}
                   variant="outline"
                 >
